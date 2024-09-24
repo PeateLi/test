@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.container {
+				display: flex;
+				flex-direction: column;
+				min-height: 100vh;
+			}
+			header, footer {
+				height: 50px;
+				background: red;
+			}
+			.content {
+				flex: 1;
+
+				background: yellow;
+			}
+			.left-sidebar,  .right-sidebar{
+				width: 100px;
+				background: blue;
+			}
+			
+			
+			/* grid */
+			/* .container {
+				display: grid;
+				grid-template-areas: 
+				"header header header"
+				"left-sidebar content right-sidebar"
+				"footer footer footer";
+				grid-template-columns: 150px auto 150px;
+				grid-template-rows: 50px auto 50px;
+				min-height: 100vh;
+			}
+			header{
+				grid-area: header;
+			}
+			.content {
+				grid-area: content;
+			}
+			.left-sidebar {
+				grid-area: left-sidebar;
+			}
+			.right-sidebar {
+				grid-area: right-sidebar;
+			}
+			footer{
+				grid-area: footer;
+			} */
+		</style>
+	</head>
+	<body>
+		<!-- 分别用 flex 和 grid 来实现一个圣杯布局 -->
+		
+		<div class="container">
+			<header>Header</header>
+			<div class="content">
+				
+				<aside class="left-sidebar"></aside>
+				<div>
+					content
+				</div>
+				<aside class="right-sidebar"></aside>
+			</div>
+			
+			<footer>footer</footer>
+		</div>
+		
+	</body>
+	<script>
+		
+		//接受多个参数的函数换成接受一个单一参数的函数 返回剩下参数结果函数
+		// 函数柯理化
+		// function curry(func) {
+		// 	return function curried (...args){
+		// 		if(args.length === func.length){
+		// 			return func.apply(this,args);
+		// 		}else {
+		// 			return function (...moreArgs){
+		// 				return curried.apply(this, args.concat(moreArgs))
+		// 			}
+		// 		}
+		// 	}
+		// }
+		// function add(a,b,c){
+		// 	return a + b + c
+		// }
+		// const curriedAdd = curry(add)
+		// const result = curriedAdd(1)(2)(3)
+		
+		// console.log()
+		
+		
+		
+	// 	const imgRef = useRef(null)
+	// 	const [isVisible, setIsVisible] = useState(false);
+		
+	// 	const handleIntersection = (entries) => {
+	// 			entries.forEach(entry => {
+	// 				if(entry.isIntersection){
+	// 					setIsVisible(true)
+	// 					ovserver.unobserve(entry.target)
+	// 				}
+	// 			})
+	// 	}
+		
+	// 	useEffect(() => {
+	// 		const ovserver = new IntersectionObserver(handleIntersection)
+	// 		if(imgRef.current){
+	// 			ovserver.observe(imgRef.current)
+	// 		}
+	// 		return () => {
+	// 			ovserver.unobserve(imgRef.current)
+	// 		}
+	// 	}, [])
+		
+		
+		
+	// <img ref={imgRef} src={isVisible ? url : ''}/>
+		
+	</script>
+</html>

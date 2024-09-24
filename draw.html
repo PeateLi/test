@@ -1,0 +1,161 @@
+
+<!-- saved from url=(0081)https://weiyingtianxia-1324050123.cos-website.ap-guangzhou.myqcloud.com/draw.html -->
+<html lang="en"><script id="allow-copy_script" src="chrome-extension://aefehdhdciieocakfobpaaolhipkcpgc/content_scripts/copy.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./draw_files/layui.css">
+    <link rel="stylesheet" href="./draw_files/font-awesome.min.css">
+    <link rel="stylesheet" href="./draw_files/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./draw_files/style.css">
+    <script src="./draw_files/jquery-1.8.3.min.js"></script>
+    <script src="./draw_files/swiper-bundle.min.js"></script>
+    <script src="./draw_files/layui.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <div class="page2">
+        <div class="banner">
+            
+        </div>
+        <div class="draw">
+            <div class="item move">
+                <img src="./draw_files/card1.png" width="100%" class="mic" alt="">
+                <div class="re" style="display: none;">
+                    <img src="./draw_files/bigCard.png" width="100%" alt="">
+                    <div>优惠8.08元</div>
+                </div>
+            </div>
+            <div class="item move">
+                <img src="./draw_files/card2.png" width="100%" class="mic" alt="">
+                <div class="re" style="display: none;">
+                    <img src="./draw_files/bigCard.png" width="100%" alt="">
+                    <div>优惠13.14元</div>
+                </div>
+            </div>
+            <div class="item move">
+                <img src="./draw_files/card3.png" width="100%" class="mic" alt="">
+                <div class="re" style="display: none;">
+                    <img src="./draw_files/bigCard.png" width="100%" alt="">
+                    <div>优惠52元/5200积分</div>
+                </div>
+            </div>
+            <div class="item move">
+                <img src="./draw_files/card4.png" width="100%" class="mic" alt="">
+                <div class="re" style="display: none;">
+                    <img src="./draw_files/bigCard.png" width="100%" alt="">
+                    <div>凭外袋·加88元兑换价值1888元金戒指1枚</div>
+                </div>
+            </div>
+            <div class="item move">
+                <img src="./draw_files/card5.png" width="100%" class="mic" alt="">
+                <div class="re" style="display: none;">
+                    <img src="./draw_files/bigCard.png" width="100%" alt="">
+                    <div>凭外袋，加15元兑换100元和成天下槟榔一包</div>
+                </div>
+            </div>
+            <div class="item move">
+                <img src="./draw_files/card6.png" width="100%" class="mic" alt="">
+                <div class="re" style="display: none;">
+                    <img src="./draw_files/bigCard.png" width="100%" alt="">
+                    <div>凭外袋.加168元兑换价值3498元生肖茅台一瓶</div>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            
+        </div>
+    </div>
+
+    <div class="mask display">
+        <div class="re">
+            <img src="https://weiyingtianxia-1324050123.cos-website.ap-guangzhou.myqcloud.com/draw.html" class="a-img" width="100%" alt="">
+            <div class="context display">
+                <!-- <div>恭喜您获得</div>
+                <div>谢谢惠顾+1000积分</div> -->
+            </div>
+        </div>
+    </div>
+
+<script>
+    $(function () {
+        var ua = navigator.userAgent.toLowerCase();
+        var isWeixin = ua.indexOf('micromessenger') != -1;
+        if (!isWeixin) {
+            //window.location.href = 'index.htm';
+        }
+
+        $(".rightRule").click(function () {
+            $(".rule").show();
+        });
+        $(".rule").click(function () {
+            $(".rule").hide();
+        });
+
+        let arr = [{
+            id: 1,
+            text: '优惠8.08元',
+        }, {
+            id: 2,
+            text: '优惠13.14元',
+        }, {
+            id: 3,
+            text: '优惠52元/5200积分',
+        }, {
+            id: 4,
+            text: '凭外袋·加88元兑换价值1888元金戒指1枚',
+        }, {
+            id: 5,
+            text: '凭外袋，加15元兑换100元和成天下槟榔一包',
+        }, {
+            id: 6,
+            text: '凭外袋.加168元兑换价值3498元生肖茅台一瓶',
+        }]
+
+        
+        $(".draw .item").each(function (i) {
+            $(this).find(".re div").text(arr[i].text);
+        });        
+        
+        setTimeout(() => {
+                $(".mask").addClass("display");
+                $(".draw .item").addClass("move");
+        }, 1000);
+        setTimeout(() => {
+            $(".draw .item .re").hide();
+            $(".draw .item .mic").removeClass("display");
+        }, 2000);
+
+        //点击状态
+        let canClick = 0;
+        //翻牌
+        $(".draw .item").click(function () {
+            if (canClick == 1) {
+                return false;
+            }
+            canClick = 1;
+            $(this).find(".re div").text("谢谢惠顾+1000积分");
+            let url = $(this).find(".mic").attr("src");
+            let index = $(this).index();
+            $(".draw .item").each(function (i) {
+                if ($(this).index() != index) {
+                    $(this).find(".re div").text(arr[i].text);
+                }
+            });
+            $(".mask").removeClass("display");
+            $(".a-img").attr("src", url);
+            $(".a-img").addClass("animate");
+            setTimeout(() => {
+                $(".a-img").attr("src", "./img/img_coin_bg.png");
+                $(".mask .context").removeClass("display");
+            }, 1000);
+            setTimeout(function() {
+                window.location.href = 'result.html';
+            }, 2000);
+            
+        });
+    })
+</script>
+
+</body></html>
